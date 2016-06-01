@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注销</title>
+    <{foreach $logoutList as $site}>
+    <script type="text/javascript" src="<{$site}>"></script>
+    <{/foreach}>
+    <script type="text/javascript">
+        window.location.href='<{$callback}>';
+    </script>
+</head>
+<body>
+</body>
+</html>
