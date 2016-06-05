@@ -17,3 +17,6 @@ webapp作为站点的根目录
 关于数据库的配置在libs/myMedoo.php
 
 因为该MVC框架，缺少相关安全机制，仅可作为PHP学习使用。如果在生产环境使用，请自行完善相关代码。
+
+
+Create by koastal as ubuntu@aliyun
