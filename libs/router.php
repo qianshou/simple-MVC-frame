@@ -46,6 +46,7 @@ if(count($path_array)<3){
             $key = $param[$i];
             $value = isset($param[($i+1)])? $param[($i+1)]:null;
             $_GET[$key] = $value;
+            Request::$get[$key] = $value;
         }
     }
 }
