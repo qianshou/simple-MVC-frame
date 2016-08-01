@@ -34,4 +34,15 @@ class loginModel extends Model
             }
         }
     }
+
+    function test(){
+        $sql = " SELECT COUNT(*) as `count` FROM `news`  ";
+        $query = $this->db->query($sql);
+        $result = array();
+        foreach ($query->result_array() as $row)
+        {
+            $result[] = $row;
+        }
+        return $result;
+    }
 }

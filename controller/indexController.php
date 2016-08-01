@@ -15,7 +15,8 @@ class indexController extends Controller
         $this->loginModel = new loginModel();
     }
     public function index(){
-       Response::display("index.html");
+        $res = $this->loginModel->test();
+        var_dump($res);
     }
     /**
      * 显示登录表单

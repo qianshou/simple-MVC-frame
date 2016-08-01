@@ -6,8 +6,8 @@
  * Date: 2016/5/15
  * Time: 10:55
  */
-require_once 'myMedoo.php';
-class Model extends myMedoo
+require_once 'DataAccess.php';
+class Model extends DataAccess
 {
 
 }
