@@ -5,8 +5,8 @@
  * Date: 2016/5/15
  * Time: 15:09
  */
-require_once(APPPATH."config.php");
-require_once(APPPATH."Loader.php");
+require_once(Lib_PATH."config.php");
+require_once(Lib_PATH."Loader.php");
 class Router
 {
     public static function init($class_path)
@@ -20,10 +20,10 @@ class Router
         $className = ucfirst($class_array['class']);
         $actionName = $class_array['action'];
         if(!isset($class_path[$className])){
-           frameError::NotFound();  //请求类不存在
+            FrameError::NotFound();  //请求类不存在
         }
         if(!method_exists($className,$actionName)){
-            frameError::NotFound(); //请求方法不存在
+            FrameError::NotFound(); //请求方法不存在
         }
         self::exec($className,$actionName);
     }
@@ -36,6 +36,7 @@ class Router
             $class = trim($arr[1]);
             $params[] = new $class();
         }
+        session_start();
         $instance = new $className();
         call_user_func_array([$instance,$action],$params);
     }

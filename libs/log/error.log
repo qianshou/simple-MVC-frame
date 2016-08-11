@@ -213,3 +213,8 @@
 [2016-08-11 10:06:38 | Notice ] # In (Line )
 [2016-08-11 10:06:38 | Notice ] # In (Line )
 [2016-08-11 10:06:39 | Notice ] # In (Line )
+[2016-08-11 10:52:47 | Notice ] # In (Line )
+[2016-08-11 10:53:06 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)
+[2016-08-11 11:31:32 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)
+[2016-08-11 11:31:34 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)
+[2016-08-11 11:31:34 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)

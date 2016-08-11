@@ -1683,7 +1683,7 @@ abstract class CI_DB_driver {
 		{
 			if (isset($call['file'], $call['class']))
 			{
-				// We'll need this on Windows, as APPPATH and BASEPATH will always use forward slashes
+				// We'll need this on Windows, as Lib_PATH and BASEPATH will always use forward slashes
 				if (DIRECTORY_SEPARATOR !== '/')
 				{
 					$call['file'] = str_replace('\\', '/', $call['file']);
@@ -1692,7 +1692,7 @@ abstract class CI_DB_driver {
 				if (strpos($call['file'], BASEPATH.'database') === FALSE && strpos($call['class'], 'Loader') === FALSE)
 				{
 					// Found it - use a relative path for safety
-					$message[] = 'Filename: '.str_replace(array(APPPATH, BASEPATH), '', $call['file']);
+					$message[] = 'Filename: '.str_replace(array(Lib_PATH, BASEPATH), '', $call['file']);
 					$message[] = 'Line Number: '.$call['line'];
 					break;
 				}

@@ -6,20 +6,17 @@
  * Date: 2016/6/6
  * Time: 18:13
  */
-class frameError
+class FrameError
 {
-    static function create(){
-        $e = error_get_last();
-        $error_content = '['.date("Y-m-d h:i:s",time());
-        switch($e['type']){
-            case 1:$error_content .= " | Error ]";
-                    break;
-            case 2:$error_content .= " | Warning ]";
-                    break;
-            default:$error_content .= " | Notice ]";
-        }
-        $error_content .= $e['message']." # In ".$e['file']."(Line ".$e['line'].")\n";
-        file_put_contents(Lib_PATH."/log/error.log",$error_content,FILE_APPEND);
+    static function create($e=null){
+        $e = is_null($e)? error_get_last():$e;
+        if(is_null($e))exit;    //正常结束
+        TextLoger::errorLog($e);
+        self::InteranlError();
+    }
+    static function InteranlError(){
+        echo "<h1>500 InteranlError </h1>";
+        exit;
     }
     static function NotFound(){
         echo "<h1>404 NOT FOUND :< </h1>";
@@ -30,4 +27,4 @@ class frameError
         exit;
     }
 }
-register_shutdown_function("frameError::create");
+register_shutdown_function("FrameError::create");

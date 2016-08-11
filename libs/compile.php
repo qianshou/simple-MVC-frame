@@ -27,7 +27,7 @@ class compile
         }
     }
     static public function create(){
-        $releasePath = Controller_PATH."/_release";
+        $releasePath = Lib_PATH."/_release";
         if(!file_exists($releasePath)){
             mkdir($releasePath);
         }

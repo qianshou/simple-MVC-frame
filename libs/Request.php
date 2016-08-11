@@ -5,7 +5,7 @@
  * Date: 2016/6/1
  * Time: 15:53
  */
-require_once "Security.php";
+require_once Lib_PATH."Security.php";
 class Request{
     static public $post;
     static public $get;
