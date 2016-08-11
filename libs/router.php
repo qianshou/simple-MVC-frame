@@ -5,53 +5,51 @@
  * Date: 2016/5/15
  * Time: 15:09
  */
-require_once("config.php");
-require_once("Loader.php");
-$path = isset($_SERVER['PATH_INFO'])? $_SERVER['PATH_INFO']:null;
-$path = str_replace("index.php/",'',$path);
-$path_array = explode("/",$path);
-array_shift($path_array);   //得到完整参数
-if(count($path_array)<3){
-    switch(count($path_array)){
-        case 2:
-            $controller = $path_array[0];
-            $function = $path_array[1];
-            break;
-        case 1:
-            $controller = $path_array[0];
-            $function = "index";
-            break;
-        case 0:
-            $controller = "index";
-            $function = "index";
-            break;
+require_once(APPPATH."config.php");
+require_once(APPPATH."Loader.php");
+class Router
+{
+    public static function init($class_path)
+    {
+        $path = isset($_SERVER['PATH_INFO'])? $_SERVER['PATH_INFO']:null;
+        $path = str_replace("index.php/",'',$path);
+        $path = rtrim($path,"/");
+        $path_array = explode("/",$path);
+        array_shift($path_array);   //得到完整参数
+        $class_array = self::splitFoler($path_array);
+        $className = ucfirst($class_array['class']);
+        $actionName = $class_array['action'];
+        if(!isset($class_path[$className])){
+           frameError::NotFound();  //请求类不存在
+        }
+        if(!method_exists($className,$actionName)){
+            frameError::NotFound(); //请求方法不存在
+        }
+        self::exec($className,$actionName);
     }
-}else{
-    $param = array();   //参数
-    foreach($path_array as $num=>$name){
-        $temp_dir = Controller_PATH."/".$name;
-        if(is_dir($temp_dir)){
+    public static function exec($className,$action){
+        $reflectionMethod = new ReflectionMethod($className,$action);
+        $parammeters = $reflectionMethod->getParameters();
+        $params = array();
+        foreach ($parammeters as $item) {
+            preg_match('/> ([^ ]*)/',$item,$arr);
+            $class = trim($arr[1]);
+            $params[] = new $class();
+        }
+        $instance = new $className();
+        call_user_func_array([$instance,$action],$params);
+    }
+    public static function splitFoler(&$path_array){
+        //去掉路径参数中的文件夹
+        $dir_path = Controller_PATH.DIRECTORY_SEPARATOR.current($path_array);
+        while(is_dir($dir_path)){
             array_shift($path_array);
-            continue;
-        }else{      //控制器
-            $controller = isset($path_array[0])? $path_array[0]:'index';
-            $function = isset($path_array[1])? $path_array[1]:'index';
-            array_shift($path_array);array_shift($path_array);
-            $param = $path_array;
-            break;
+            $dir_path .= DIRECTORY_SEPARATOR.current($path_array);
         }
-    }
-    if(!empty($param)){ //处理参数
-        for($i=0;$i<count($param);$i=$i+2){
-            $key = $param[$i];
-            $value = isset($param[($i+1)])? $param[($i+1)]:null;
-            $_GET[$key] = $value;
-            Request::$get[$key] = $value;
-        }
+        $res['class'] = (current($path_array)===false)?"index":current($path_array);
+        $res['action'] = (next($path_array)===false)?"index":current($path_array);
+        return $res;
     }
 }
-//echo $controller.":".$function."<hr/>";
-$controller .= "Controller";
-$controller_obj = new $controller;
-$controller_obj->$function();
+Router::init($path);
 ?>

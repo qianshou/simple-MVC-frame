@@ -21,5 +21,13 @@ class frameError
         $error_content .= $e['message']." # In ".$e['file']."(Line ".$e['line'].")\n";
         file_put_contents(Lib_PATH."/log/error.log",$error_content,FILE_APPEND);
     }
+    static function NotFound(){
+        echo "<h1>404 NOT FOUND :< </h1>";
+        exit;
+    }
+    static function classNotFound($class){
+        echo "<h1>".$class." not found.</h1>";
+        exit;
+    }
 }
 register_shutdown_function("frameError::create");

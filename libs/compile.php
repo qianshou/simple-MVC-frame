@@ -19,7 +19,7 @@ class compile
                 }else{
                     //获得文件名
                     $index = stripos($file,".");
-                    $name = substr($file,0,$index);
+                    $name = ucfirst(substr($file,0,$index));
                     $tmp = '$path[\''.$name.'\']=\''.$realPath.'\';';
                     file_put_contents($resFile,$tmp,FILE_APPEND);
                 }
