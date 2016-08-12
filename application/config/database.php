@@ -72,25 +72,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
+/**
+ * 基本配置
+ */
+//default 默认数据库
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'test';
+$db['default']['dbdriver'] = 'mysqli';
+//userapp 用户数据库
+$db['userapp']['hostname'] = 'localhost';
+$db['userapp']['username'] = 'root';
+$db['userapp']['password'] = '';
+$db['userapp']['database'] = 'user_app';
+$db['userapp']['dbdriver'] = 'mysqli';
 
-$db['default'] = array(
-    'dsn'	=> '',
-    'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'database' => 'test',
-    'dbdriver' => 'mysqli',
-    'dbprefix' => '',
-    'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'),
-    'cache_on' => FALSE,
-    'cachedir' => '',
-    'char_set' => 'utf8',
-    'dbcollat' => 'utf8_general_ci',
-    'swap_pre' => '',
-    'encrypt' => FALSE,
-    'compress' => FALSE,
-    'stricton' => FALSE,
-    'failover' => array(),
-    'save_queries' => TRUE
-);
+
+/**
+ * 高级配置
+ */
+$db['default']['dsn']	= '';
+$db['default']['dbprefix'] = '';
+$db['default']['pconnect'] = FALSE;
+$db['default']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = '';
+$db['default']['char_set'] = 'utf8';
+$db['default']['dbcollat'] = 'utf8_general_ci';
+$db['default']['swap_pre'] = '';
+$db['default']['encrypt'] = FALSE;
+$db['default']['compress'] = FALSE;
+$db['default']['stricton'] = FALSE;
+$db['default']['failover'] = array();
+$db['default']['save_queries'] = TRUE;
+
+$db['userapp']['dsn']	= '';
+$db['userapp']['dbprefix'] = '';
+$db['userapp']['pconnect'] = FALSE;
+$db['userapp']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['userapp']['cache_on'] = FALSE;
+$db['userapp']['cachedir'] = '';
+$db['userapp']['char_set'] = 'utf8';
+$db['userapp']['dbcollat'] = 'utf8_general_ci';
+$db['userapp']['swap_pre'] = '';
+$db['userapp']['encrypt'] = FALSE;
+$db['userapp']['compress'] = FALSE;
+$db['userapp']['stricton'] = FALSE;
+$db['userapp']['failover'] = array();
+$db['userapp']['save_queries'] = TRUE;

@@ -10,7 +10,7 @@ class TextLoger
 {
     public static function create($text){
         $text_content = '['.date("Y-m-d h:i:s",time())."|".$text."]";
-        file_put_contents(Lib_PATH."/log/msg.log",$text_content,FILE_APPEND);
+        file_put_contents(Log_PATH."msg.log",$text_content,FILE_APPEND);
     }
     public static function errorLog($e){
         $error_content = '['.date("Y-m-d h:i:s",time());
@@ -22,6 +22,11 @@ class TextLoger
             default:$error_content .= " | Notice ]";
         }
         $error_content .= $e['message']." # In ".$e['file']."(Line ".$e['line'].")\n";
-        file_put_contents(Lib_PATH."/log/error.log",$error_content,FILE_APPEND);
+        file_put_contents(Log_PATH."error.log",$error_content,FILE_APPEND);
+    }
+    public static function printErrorLog($msg){
+        $msg = is_array($msg)? json_encode($msg): $msg;
+        $error_content = '['.date("Y-m-d h:i:s",time())."|".$msg."]\n";
+        file_put_contents(Log_PATH."db_error.log",$error_content,FILE_APPEND);
     }
 }

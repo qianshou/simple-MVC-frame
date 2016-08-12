@@ -19,6 +19,7 @@ class Loader
     }
     public static function autoload($className)
     {
+        $className = strtolower($className);
         $path = self::$path;
         if(isset($path[$className])){
             require_once($path[$className]);

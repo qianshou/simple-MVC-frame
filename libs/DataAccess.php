@@ -10,16 +10,9 @@ require_once Lib_PATH.'/database/DB.php';
 class DataAccess
 {
     /**
-     * 默认表名
-     */
-    protected static $table_name = '';
-
-    /**
      * 默认的数据库操作类
      */
     protected $db;
-
-
     public function __construct($params = '', $active_record_override = NULL)
     {
         $this -> db = DB($params, $active_record_override);
@@ -33,6 +26,5 @@ class DataAccess
     {
         return DB($params, $active_record_override);
     }
-
 }
 ?>

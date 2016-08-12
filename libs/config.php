@@ -23,3 +23,11 @@ if(ENVIRONMENT == "development"){
 if(ENVIRONMENT == "production"){
     error_reporting(0);
 }
+include_once APPLICATION."config/database.php";
+class Config{
+    public static $db;
+    public static function create($dbConf){
+        self::$db = $dbConf;
+    }
+}
+Config::create($db);
