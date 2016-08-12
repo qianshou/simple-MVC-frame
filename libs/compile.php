@@ -13,7 +13,7 @@ class compile
         foreach($list as $file){
             $res = stripos($file,"_");
             if($file!='.'&&$file!='..'&& !($res===0) && $file!='ext'){
-                $realPath = $path.DIRECTORY_SEPARATOR.$file;
+                $realPath = $path.$file;
                 if(is_dir($realPath)){
                     self::getPath($realPath,$resFile);
                 }else{
