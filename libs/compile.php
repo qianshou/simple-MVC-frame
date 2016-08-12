@@ -13,13 +13,14 @@ class compile
         foreach($list as $file){
             $res = stripos($file,"_");
             if($file!='.'&&$file!='..'&& !($res===0) && $file!='ext'){
-                $realPath = $path.$file;
+                $realPath = rtrim($path,DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$file;
                 if(is_dir($realPath)){
                     self::getPath($realPath,$resFile);
                 }else{
                     //获得文件名
                     $index = stripos($file,".");
                     $name = ucfirst(substr($file,0,$index));
+                    $key = $realPath;
                     $tmp = '$path[\''.$name.'\']=\''.$realPath.'\';';
                     file_put_contents($resFile,$tmp,FILE_APPEND);
                 }
@@ -34,7 +35,7 @@ class compile
         $releaseFile = $releasePath."/release.php";
         $content = '<?php global $path;$path=array();';
         file_put_contents($releaseFile,$content);
-        self::getPath(Controller_PATH,$releaseFile);
+        //self::getPath(Controller_PATH,$releaseFile);
         self::getPath(Model_PATH,$releaseFile);
         self::getPath(Lib_PATH,$releaseFile);
         include_once($releaseFile);

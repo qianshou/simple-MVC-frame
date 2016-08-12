@@ -12,7 +12,9 @@ class FrameError
         $e = is_null($e)? error_get_last():$e;
         if(is_null($e))exit;    //正常结束
         TextLoger::errorLog($e);
-        self::InteranlError();
+        if(ENVIRONMENT == "production"){
+            self::InteranlError();
+        }
     }
     static function InteranlError(){
         echo "<h1>500 InteranlError </h1>";

@@ -218,3 +218,6 @@
 [2016-08-11 11:31:32 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)
 [2016-08-11 11:31:34 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)
 [2016-08-11 11:31:34 | Notice ]Use of undefined constant FUCK - assumed 'FUCK' # In D:\myGitHub\simple-MVC-frame\controller\Demo.php(Line 12)
+[2016-08-12 05:00:55 | Notice ]require_once(): Failed opening required 'D:\myGitHub\simple-MVC-frame\controller\D:\myGitHub\simple-MVC-frame\controller\admin\Index.php' (include_path='.;C:\php\pear') # In D:\myGitHub\simple-MVC-frame\libs\router.php(Line 26)
+[2016-08-12 06:24:58 | Notice ]require_once(): Failed opening required 'D:\myGitHub\simple-MVC-frame\controller\D:\myGitHub\simple-MVC-frame\controller\admin\Index.php' (include_path='.;C:\php\pear') # In D:\myGitHub\simple-MVC-frame\libs\router.php(Line 26)
+[2016-08-12 06:25:16 | Notice ]require_once(): Failed opening required 'D:\myGitHub\simple-MVC-frame\controller\D:\myGitHub\simple-MVC-frame\controller\admin\index.php' (include_path='.;C:\php\pear') # In D:\myGitHub\simple-MVC-frame\libs\router.php(Line 26)

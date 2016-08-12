@@ -17,11 +17,13 @@ class Router
         $path_array = explode("/",$path);
         array_shift($path_array);   //得到完整参数
         $class_array = self::splitFoler($path_array);
-        $className = ucfirst($class_array['class']);
+        $className = $class_array['class'];
         $actionName = $class_array['action'];
-        if(!isset($class_path[$className])){
+        $filePath = $class_array['path'].".php";
+        if(!file_exists($filePath)){
             FrameError::NotFound();  //请求类不存在
         }
+        require_once $filePath;
         if(!method_exists($className,$actionName)){
             FrameError::NotFound(); //请求方法不存在
         }
@@ -42,11 +44,12 @@ class Router
     }
     public static function splitFoler(&$path_array){
         //去掉路径参数中的文件夹
-        $dir_path = Controller_PATH.DIRECTORY_SEPARATOR.current($path_array);
+        $dir_path = Controller_PATH.current($path_array);
         while(is_dir($dir_path)){
             array_shift($path_array);
             $dir_path .= DIRECTORY_SEPARATOR.current($path_array);
         }
+        $res['path'] = $dir_path;
         $res['class'] = (current($path_array)===false)?"index":current($path_array);
         $res['action'] = (next($path_array)===false)?"index":current($path_array);
         return $res;
