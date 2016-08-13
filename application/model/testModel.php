@@ -9,6 +9,6 @@
 class testModel
 {
     public function doTest(){
-        
+
     }
 }

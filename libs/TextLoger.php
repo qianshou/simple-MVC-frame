@@ -25,7 +25,7 @@ class TextLoger
         file_put_contents(Log_PATH."error.log",$error_content,FILE_APPEND);
     }
     public static function printErrorLog($msg){
-        $msg = is_array($msg)? json_encode($msg): $msg;
+        $msg = is_array($msg)? var_export($msg,true): $msg;
         $error_content = '['.date("Y-m-d h:i:s",time())."|".$msg."]\n";
         file_put_contents(Log_PATH."db_error.log",$error_content,FILE_APPEND);
     }
