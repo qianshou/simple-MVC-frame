@@ -13,8 +13,8 @@ class Loader
     public static $path;
     public  static function baseLoad($path)
     {
-        require_once("Controller.php"); //加载控制器类
-        require_once("Model.php");      //加载模型类
+        require("Controller.php"); //加载控制器类
+        require("Model.php");      //加载模型类
         self::$path = $path;
     }
     public static function autoload($className)
@@ -22,7 +22,7 @@ class Loader
         $className = strtolower($className);
         $path = self::$path;
         if(isset($path[$className])){
-            require_once($path[$className]);
+            require($path[$className]);
         }else{
             FrameError::classNotFound($className);
         }
